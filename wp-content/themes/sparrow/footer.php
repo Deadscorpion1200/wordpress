@@ -1,30 +1,16 @@
 <!-- footer ================================================== -->
-<footer>
+<footer id="footer">
 
     <div class="row">
 
+        <?php
+            wp_nav_menu(array(
+                'theme_location' => 'footer',
+                'container' => null,
+                'menu_class' => 'footer-menu'
+            ));
+        ?>
         <div class="twelve columns">
-
-            <ul class="footer-nav">
-                <li>
-                    <a href="#">Home.</a>
-                </li>
-                <li>
-                    <a href="#">Blog.</a>
-                </li>
-                <li>
-                    <a href="#">Portfolio.</a>
-                </li>
-                <li>
-                    <a href="#">About.</a>
-                </li>
-                <li>
-                    <a href="#">Contact.</a>
-                </li>
-                <li>
-                    <a href="#">Features.</a>
-                </li>
-            </ul>
 
             <ul class="footer-social">
                 <li>
@@ -77,15 +63,6 @@
 </footer>
 <!-- Footer End-->
 
-<!-- Java Script ================================================== -->
-<!-- <script>
-    window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
-</script> -->
-<!-- <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script> -->
-
-<!-- <script src="js/jquery.flexslider.js"></script> -->
-<!-- <script src="js/doubletaptogo.js"></script> -->
-<!-- <script src="js/init.js"></script> -->
 
 <?php wp_footer(); ?>
 </body>
