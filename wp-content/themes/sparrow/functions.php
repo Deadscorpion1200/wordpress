@@ -3,6 +3,7 @@
 add_action('wp_enqueue_scripts', 'style_theme');
 add_action('wp_footer', 'scripts_theme');
 add_action('after_setup_theme', 'myMenu' );
+add_action( 'widgets_init', 'register_my_widgets' );
 
 function myMenu()
 {
@@ -27,4 +28,15 @@ function scripts_theme()
   wp_enqueue_script('doubletaptogo', get_template_directory_uri().'/assets/js/doubletaptogo.js', ['jquery'], null, true);
   wp_enqueue_script('init', get_template_directory_uri().'/assets/js/init.js', ['jquery'], null, true);
   wp_enqueue_script('modernizr', get_template_directory_uri().'/assets/js/modernizr.js', null, null, true);
+}
+function register_my_widgets(){
+	register_sidebar( array(
+		'name'          => 'Left sidebar',
+		'id'            => "left_sidebar",
+    'description'   => 'Описание нашего сайдбара',
+		'before_widget' => '<div class="widget %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_title'  => '<h5 class="widgettitle">',
+		'after_title'   => "</h5>\n",
+	) );
 }
