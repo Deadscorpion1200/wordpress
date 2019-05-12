@@ -99,7 +99,10 @@ img { border-radius: 3px; }
 .widget_categories li a:hover {
    color: #313131;
 }
-
+#sidebar li.current-cat a
+{
+   color: #313131;
+}
 /* tag cloud */
 #sidebar .tagcloud {
    margin: 18px 0 18px -12px;
