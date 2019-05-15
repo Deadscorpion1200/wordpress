@@ -4,6 +4,25 @@ add_action('wp_enqueue_scripts', 'style_theme');
 add_action('wp_footer', 'scripts_theme');
 add_action('after_setup_theme', 'myMenu' );
 add_action( 'widgets_init', 'register_my_widgets' );
+add_filter( 'document_title_separator', 'my_sep');
+add_filter('the_content', 'test_content');
+add_shortcode('my_short', 'short_function');
+
+
+function test_content($content)
+{
+  $content .= "<br>Спасибо за внимание!";
+  return $content;
+}
+
+
+
+function my_sep($sep)
+{
+
+  $sep = '|';
+  return $sep;
+}
 
 function myMenu()
 {
@@ -69,4 +88,30 @@ function register_my_widgets(){
 		'before_title'  => '<h5 class="widgettitle">',
 		'after_title'   => "</h5>\n",
 	) );
+}
+function short_function()
+{
+  return 'Я шорткод!';
+}
+
+add_shortcode( 'posts', 'show_last_posts');
+
+function show_last_posts()
+{
+  $posts = get_posts( array(
+    'numberposts' => 3,
+    'order' => 'ASC',
+    'post_type'   => 'post',
+    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+  ) );
+  if($posts)
+  {
+    $html.='<ul>';
+    foreach($posts as $post)
+    {
+      $html .= sprintf('<li><a href="%s">%s</li>', get_permalink($post), get_the_title($post));
+    }
+    $html .='</ul>';
+  }
+  return $html;
 }
