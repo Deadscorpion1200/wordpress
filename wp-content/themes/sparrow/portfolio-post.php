@@ -32,7 +32,7 @@ Template Post Type: portfolio
 
             <div id="secondary"  class="four columns entry-details">
 
-                  <h1>Geometrics.</h1>
+                  <h1><?php the_title();?></h1>
 
                   <div class="entry-description">
 
@@ -44,11 +44,10 @@ Template Post Type: portfolio
                   </div>
 
                   <ul class="portfolio-meta-list">
-						   <li><span>Date: </span>January 2014</li>
-						   <li><span>Client </span>Styleshout</li>
+						   <li><span>Date: </span><?php the_field('project-date')?></li>
+						   <li><span>Client </span><?php the_field('client')?></li>
 						   <li><span>Skills: </span>Photoshop, Photography, Branding</li>
 				      </ul>
-
                   <a class="button" href="http://behance.net">View project</a>
 
             </div> <!-- secondary End-->
@@ -57,17 +56,13 @@ Template Post Type: portfolio
 
                <div class="entry-media">
 
-                  <img src="images/portfolio/entries/geometric-backgrounds-01.jpg" alt="" />
-
-                  <img src="images/portfolio/entries/geometric-backgrounds-02.jpg" alt="" />
+                  <img src="<?php the_field('project-photo')?>" alt="" />
 
                </div>
 
                <div class="entry-excerpt">
 
-				      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
-                  nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
-                  cursus a sit amet mauris. Morbi accumsan ipsum velit. </p>
+				      <p><?php the_field('project_description')?></p>
 
 					</div>
 
