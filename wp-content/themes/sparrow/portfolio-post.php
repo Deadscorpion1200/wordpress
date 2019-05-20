@@ -54,7 +54,7 @@ Template Post Type: portfolio
         
         <div class="entry-media">
 
-          <?php the_post_thumbnail(); ?>
+          <img src="images/portfolio/entries/geometric-backgrounds-01.jpg" alt="" />
 
           <img src="images/portfolio/entries/geometric-backgrounds-02.jpg" alt="" />
 
