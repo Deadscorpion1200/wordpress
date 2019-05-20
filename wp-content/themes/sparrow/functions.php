@@ -138,7 +138,7 @@ function register_post_types(){
 		'description'         => 'Это наши работы в портфолио',
 		'public'              => true,
 		'publicly_queryable'  => true, // зависит от public
-		'exclude_from_search' => true, // зависит от public
+		'exclude_from_search' => false, // зависит от public
 		'show_ui'             => true, // зависит от public
 		'show_in_menu'        => true, // показывать ли в меню адмнки
 		'show_in_admin_bar'   => true, // по умолчанию значение show_in_menu
@@ -152,9 +152,48 @@ function register_post_types(){
 		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
 		'hierarchical'        => false,
 		'supports'            => array('title','editor', 'author', 'thumbnail', 'excerpt'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-		'taxonomies'          => array(),
+		'taxonomies'          => array('skills'),
 		'has_archive'         => false,
 		'rewrite'             => true,
 		'query_var'           => true,
 	) );
+}
+
+// хук для регистрации
+add_action( 'init', 'create_taxonomy' );
+function create_taxonomy(){
+	// список параметров: http://wp-kama.ru/function/get_taxonomy_labels
+	register_taxonomy('skills', array('portfolio'), array(
+		'label'                 => '', // определяется параметром $labels->name
+		'labels'                => array(
+			'name'              => 'Навыки',
+			'singular_name'     => 'Навык',
+			'search_items'      => 'Найти навык',
+			'all_items'         => 'Все навыки',
+			'view_item '        => 'Смотреть навыки',
+			'parent_item'       => 'Родительский навык',
+			'parent_item_colon' => 'Родительский навык:',
+			'edit_item'         => 'Изменить навык',
+			'update_item'       => 'Обновить навык',
+			'add_new_item'      => 'Добавить новый навык',
+			'new_item_name'     => 'Новое имя навыка',
+			'menu_name'         => 'Навыки',
+		),
+		'description'           => 'Навыки, которые использовались в работе над проектом', // описание таксономии
+		'public'                => true,
+		'publicly_queryable'    => true, // равен аргументу public
+		'hierarchical'          => false,
+		//'update_count_callback' => '_update_post_term_count',
+		'rewrite'               => true,
+		//'query_var'             => $taxonomy, // название параметра запроса
+		'capabilities'          => array(),
+		'meta_box_cb'           => null, // callback функция. Отвечает за html код метабокса (с версии 3.8): post_categories_meta_box или post_tags_meta_box. Если указать false, то метабокс будет отключен вообще
+		'show_admin_column'     => false, // Позволить или нет авто-создание колонки таксономии в таблице ассоциированного типа записи. (с версии 3.5)
+		'_builtin'              => false,
+		'show_in_quick_edit'    => null, // по умолчанию значение show_ui
+	) );
+}
+add_action( 'init', 'skills_for_portfolio' );
+function skills_for_portfolio(){
+	register_taxonomy_for_object_type( 'skills', 'portfolio');
 }

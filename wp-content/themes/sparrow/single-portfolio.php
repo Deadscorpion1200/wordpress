@@ -1,9 +1,4 @@
-<?php
-/*
-Template Name: Страница с работой портфолио
-Template Post Type: portfolio
-*/
-?>
+
   <?php get_header() ?>
    <!-- Page Title
    ================================================== -->
@@ -46,7 +41,9 @@ Template Post Type: portfolio
                   <ul class="portfolio-meta-list">
 						   <li><span>Date: </span><?php the_field('project-date')?></li>
 						   <li><span>Client </span><?php the_field('client')?></li>
-						   <li><span>Skills: </span>Photoshop, Photography, Branding</li>
+                     <li><span>Skills: </span>
+                     <?php the_terms( get_the_ID(), 'skills', '', ' / ', '')?>
+                  </li>
 				      </ul>
                   <a class="button" href="http://behance.net">View project</a>
 
