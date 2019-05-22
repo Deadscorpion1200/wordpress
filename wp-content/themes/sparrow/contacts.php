@@ -46,9 +46,8 @@
 
               <div id="contact-form">
 
-                  
                   <!-- form -->
-                  <form name="contactForm" id="contactForm" method="post" action="<?php echo admin_url('admin-ajax.php?action=send_mail');?>">
+                  <form name="contactForm" id="contactForm" method="post" action="">
       					<fieldset>
 
                         <div class="half">
@@ -79,7 +78,7 @@
                         </div>
 
       					</fieldset>
-      				</form><!-- Form End -->
+      				</form> <!-- Form End -->
 
                   <!-- contact-warning -->
                   <div id="message-warning"></div>

@@ -2,6 +2,7 @@
 
 <!-- Page Title
    ================================================== -->
+<?php echo get_post_format(); ?>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 <!-- Content
@@ -13,11 +14,7 @@
       <div id="primary" class="eight columns">
 
          <?php get_template_part( 'post-templates/post', get_post_format() ); ?>
-         
-         <ul class="post-nav cf">
-            <li class="prev"><a rel="prev" href="#"><?php previous_post_link( $format='%link', $link='<strong>Prev Article</strong> %title')?></li>
-            <li class="next"><a rel="next" href="#"><?php next_post_link( $format='%link', $link='<strong>Next Article</strong> %title')?></li>
-         </ul>
+
       </div> <!-- Primary End-->
 
       <div id="secondary" class="four columns end">
