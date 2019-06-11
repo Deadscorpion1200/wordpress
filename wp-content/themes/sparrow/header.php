@@ -32,8 +32,8 @@
 
                     <div class="logo">
                         <a href="<?php echo home_url(); ?>"> 
-                            <!-- <img alt="" src="images/logo.png"> -->
-                            <?php bloginfo('name'); ?>
+                            <img alt="" src="<?php echo get_template_directory_uri(); ?>/images/logo.png">
+                            
                         </a>
                     </div>
 
